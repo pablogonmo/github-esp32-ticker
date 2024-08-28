@@ -1,46 +1,13 @@
 <h1 align = "center"> 🌟T-Display-S3🌟</h1>
 
-[![PlatformIO CI](https://github.com/Xinyuan-LilyGO/T-Display-S3/actions/workflows/platformio.yml/badge.svg)](https://github.com/Xinyuan-LilyGO/T-Display-S3/actions/workflows/platformio.yml)
-[![Arduino_CI](https://github.com/Xinyuan-LilyGO/T-Display-S3/actions/workflows/arduino_ci.yml/badge.svg)](https://github.com/Xinyuan-LilyGO/T-Display-S3/actions/workflows/arduino_ci.yml)
-
 ## 1️⃣Support Product
 
 | Product (PinMap)        | SOC        | Flash | PSRAM    | Resolution | Size     |
 | ----------------------- | ---------- | ----- | -------- | ---------- | -------- |
 | [T-Display-S3][1]       | ESP32-S3R8 | 16MB  | 8MB(OPI) | 170x320    | 1.9 Inch |
-| [T-Display-S3-Touch][2] | ESP32-S3R8 | 16MB  | 8MB(OPI) | 170x320    | 1.9 Inch |
-| [T-Display-S3-MIDI][3]  |            |       |          |            |          |
 
 [1]: https://www.lilygo.cc/products/t-display-s3?variant=42589373268149
-[2]: https://www.lilygo.cc/products/t-display-s3?variant=42351558590645
-[3]: https://www.lilygo.cc/products/t-display-s3?variant=43164741632181
 
-## 2️⃣Examples
-
-```
-./examples/
-├── Arduino_GFXDemo              #  Arduino_GFX example
-├── Arduino_GFX_PDQgraphicstest  #  Arduino_GFX example
-├── GetBatteryVoltage            #  Get battery voltage example
-├── I2CScan                      #  Scan for external devices using I2C
-├── ImageScroll                  #  Image scrolling example by @Rudi Ackermann
-├── MPR121TouchSensor            #  Example of using MPR121 capacitive touch
-├── PCBClock                     #  TFT_eSPI PCBClock example by @VolosR
-├── PokerS3                      #  TFT_eSPI PokerS3  example by @VolosR
-├── SerialExample                #  Example of using serial communication
-├── T-Display-S3-MIDI            #  T-Display-S3-MIDI Shield example
-├── TFT_Rainbow                  #  TFT_eSPI example
-├── factory                      #  factory example
-├── lv_demos                     #  lvgl demo                        
-├── nes                          #  NES game emulator
-├── ota                          #  Over-the-air upgrade example
-├── sd                           #  T-Display-TF Shield example
-├── tft                          #  TFT_eSPI example
-├── touch_test                   #  Capacitive touch test example
-├── usb_hid_pad                  #  Capacitive Touch Screen Simulation USB HID Example
-├── ULP_ADC                      #  Example of ADC detection for ULP-FSM(arduino_esp32 version: 3.0.0-rc3)
-└── ULP_Count                    #  Example of register counting for ULP-FSM(arduino_esp32 version: 3.0.0-rc3)
-```
 
 ## 3️⃣ PlatformIO Quick Start (Recommended)
 
@@ -111,15 +78,6 @@
 * [SPIFFS Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/SPIFFS)
 * [FFat Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/FFat)
 * For more examples of esp32 chip functions, please refer to [arduino-esp32-libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries)
-
-
-# 8️⃣ Resource
-
-| Product(PinMap)         | schematic                                               | Dimensions                  | PCB 3D                                    | PinMap                                   |
-| ----------------------- | ------------------------------------------------------- | --------------------------- | ----------------------------------------- | ---------------------------------------- |
-| [T-Display-S3][1]       | [schematic](./schematic/T_Display_S3.pdf)               | [DWG](./dimensions/PCB.dwg) | [STP](./dimensions/t-display-s3-full.stp) | [PinMap](./image/T-DISPLAY-S3.jpg)       |
-| [T-Display-S3 Touch][1] | [schematic](./schematic/T_Display_S3.pdf)               | [DWG](./dimensions/PCB.dwg) | [STP](./dimensions/t-display-s3-full.stp) | [PinMap](./image/T-DISPLAY-S3-TOUCH.png) |
-| [T-Display-S3-MIDI][1]  | [schematic](./schematic/SCH_T-Display-S3-MIDI_V1.1.pdf) | DWG                         | STP                                       |                                          |
 
 
 ## 9️⃣ FAQ
