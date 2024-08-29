@@ -22,6 +22,8 @@ You will need all the following to complete the installation and setup of the de
 
 - For the T-Display-S3 the battery is optional, as you an power it using any usb-c cable
 
+- you can purchase the shell version of the T-Display-S3 (non-touch) or you can print your own shell with the stl files in the folder dimensions
+
 - A backend server to retrieve all the data, and fetch it as json files. Configuration is described in section 4
 
 - Flash the devices with the micropython firmware. Environment set up and flashing process is described in section 5
@@ -53,8 +55,25 @@ If you want to support the project, you can use the below affiliate links to pur
 [2]: https://www.aliexpress.us/item/3256804310228562.html
 
 
-# 4️⃣  Back-End server installation
+| Product            | Capacity | Voltage | Measurements |
+| -------------------| -------- | ------- | ------------ |
+| [Battery][3]       | 200mAh   | 3.7V    | 03x25x30     |
 
+[3]: https://www.aliexpress.com/item/4001226499594.htm
+
+
+# 4️⃣  Back-End server installation
+You'll need to set up a back-end to fetch the github data and for the device to retrieve it. I used a vercel instance which is free and you can connect it to the github repo and deploy the code automatically.
+
+After that you'll need to set an environment variable up called GITHUB_TOKEN, and set the value of the personal access token defined in step 2.
+
+Then deploy the files:
+api/*
+img/*
+node_modules/*
+package.json
+
+If everyhthing goes well, you should be able to see data at https://yourproject.vercel.app/api/githubData?username=yourusername
 
 
 # 5️⃣  Micropython environment set up
@@ -68,27 +87,45 @@ If you want to support the project, you can use the below affiliate links to pur
 
 
 # 7️⃣ FAQ
+1. **There are 2 versions of the T-Dongle-S3, which one should I choose?**
+   * The one with the LCD screen
 
-4. **Can't upload any sketch，Please enter the upload mode manually.**
+2. **There are 2 versions of the T-Display-S3, which one should I choose?**
+   * The non-touch version. Either with the shell or print it yourself
+
+3. **I can't flash the device with the micropython firmware**
+   * If you followed the steps above it should work correctly and you should be able to connect to the device and execute python code with VSCode or Thonny (recommended). Otherwise contact me on twitter if you can't make it work
+
+4. **I can't upload any sketch，or flash the device**
    * Connect the board via the USB cable
    * Press and hold the **BOOT** button , While still pressing the **BOOT** button
    * Press **RST** button
    * Release the **RST** button
    * Release the **BOOT** button (If there is no **BOOT** button, disconnect IO0 from GND.)
-   * Upload sketch
+   * Upload the code
    * Press the **RST** button to exit download mode
 
-6. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](https://github.com/Xinyuan-LilyGO/T-Display-S3/firmware/README.MD)**
+5. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](https://github.com/Xinyuan-LilyGO/T-Display-S3/blob/main/firmware/README.MD)**
+
+6. **I can't connect to the device plugging it in my laptop
+   * Reflash the micropython firmware
+
+7. **I can connect to the device but can't execute any python code
+   * Make sure you're not in boot mode, pt. 4
+
+8. **The backend server has stopped working and doesn't retrieve data**
+   * Double check the environment variable is still correctly set up
+   * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel
 
 
 # 8️⃣  Attributions
 
 The following repositories have been used to build this project:
  
-Lilygo hardware repos:
+@Xinyuan-LilyGO hardware repos:
 - https://github.com/Xinyuan-LilyGO/T-Dongle-S3/blob/main/image/Pins.png
 - https://github.com/Xinyuan-LilyGO/T-Display-S3/blob/main/image/T-DISPLAY-S3.jpg
 
 Drivers for the displays:
-- russhughes (T-Display-S3): https://github.com/russhughes/st7789s3_mpy
-- mmMicky(T-Dongle-S3): https://github.com/mmMicky/st7735_mpy
+- @russhughes (T-Display-S3): https://github.com/russhughes/st7789s3_mpy
+- @mmMicky(T-Dongle-S3): https://github.com/mmMicky/st7735_mpy
