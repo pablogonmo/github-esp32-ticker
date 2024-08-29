@@ -16,9 +16,9 @@ I have coded 2 versions:
 # 1️⃣  Requirements
 You will need all the following to complete the installation and setup of the device:
 
-- While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY in order to fetch the data. This is detailed in section 2
+- While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY in order to fetch the data. This is detailed in section 3
 
-- Either the T-Dongle-S3 or the T-Display-S3. You can purchase them using the links down below in section 3
+- Either the T-Dongle-S3 or the T-Display-S3. You can purchase them using the links down below in section 2
 
 - For the T-Display-S3 the battery is optional, as you an power it using any usb-c cable
 
@@ -31,7 +31,26 @@ You will need all the following to complete the installation and setup of the de
 - Alternatively you can generate binary files to flash the device easily, or you can use the binaries provided in the files folder
 
 
-# 2️⃣ Generating a Github personal access token
+# 2️⃣ Shopping List
+If you want to support the project, you can use the below affiliate links to purchase the PCB's and batteries:
+
+| Product                 | SOC        | Flash | Resolution | Size     | Driver   |
+| ----------------------- | ---------- | ----- | ---------- | -------- | -------- |
+| [T-Dongle-S3][1]        | ESP32-S3R8 | 16MB  | 80x160     | 0.96"    | ST7735   |
+| [T-Display-S3][2]       | ESP32-S3R8 | 16MB  | 170x320    | 1.9"     | ST7789   |
+
+[1]: https://www.aliexpress.us/item/3256804673688886.html
+[2]: https://www.aliexpress.us/item/3256804310228562.html
+
+
+| Product            | Capacity | Voltage | Measurements |
+| -------------------| -------- | ------- | ------------ |
+| [Battery][3]       | 200mAh   | 3.7V    | 03x25x30     |
+
+[3]: https://www.aliexpress.com/item/4001226499594.html
+
+
+# 3️⃣ Generating a Github personal access token
 The back-end server fetched the source data from github directly by means of the graphQL API which is publicly available. The only required is a personal access token which can be generated following the steps:
 
 1.- Go to your github account settings
@@ -43,37 +62,23 @@ The back-end server fetched the source data from github directly by means of the
 4.- Set a wide expiration date, and grant the minimum permissions, usually read, user and repo should be sufficient
 
 
-# 3️⃣ Shopping List
-If you want to support the project, you can use the below affiliate links to purchase the PCB's and batteries:
-
-| Product                 | SOC        | Flash | Resolution | Size      | Driver    |
-| ----------------------- | ---------- | ----- | ---------- | --------  | --------  |
-| [T-Dongle-S3][1]        | ESP32-S3R8 | 16MB  | 80x160     | 0.96 Inch | ST7735    |
-| [T-Display-S3][2]       | ESP32-S3R8 | 16MB  | 170x320    | 1.9 Inch  | ST7789    |
-
-[1]: https://www.aliexpress.us/item/3256804673688886.html
-[2]: https://www.aliexpress.us/item/3256804310228562.html
-
-
-| Product            | Capacity | Voltage | Measurements |
-| -------------------| -------- | ------- | ------------ |
-| [Battery][3]       | 200mAh   | 3.7V    | 03x25x30     |
-
-[3]: https://www.aliexpress.com/item/4001226499594.htm
-
 
 # 4️⃣  Back-End server installation
 You'll need to set up a back-end to fetch the github data and for the device to retrieve it. I used a vercel instance which is free and you can connect it to the github repo and deploy the code automatically.
 
-After that you'll need to set an environment variable up called GITHUB_TOKEN, and set the value of the personal access token defined in step 2.
+After that you'll need to set an environment variable up called GITHUB_TOKEN, and set the value of the personal access token defined in step 3.
 
 Then deploy the files:
+
 api/*
+
 img/*
+
 node_modules/*
+
 package.json
 
-If everyhthing goes well, you should be able to see data at https://yourproject.vercel.app/api/githubData?username=yourusername
+If everyhthing goes well, you should be able to see data at: https://yourproject.vercel.app/api/githubData?username=yourusername
 
 
 # 5️⃣  Micropython environment set up
@@ -107,15 +112,15 @@ If everyhthing goes well, you should be able to see data at https://yourproject.
 
 5. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](https://github.com/Xinyuan-LilyGO/T-Display-S3/blob/main/firmware/README.MD)**
 
-6. **I can't connect to the device plugging it in my laptop
+6. **I can't connect to the device plugging it in my laptop**
    * Reflash the micropython firmware
 
-7. **I can connect to the device but can't execute any python code
+7. **I can connect to the device but can't execute any python code**
    * Make sure you're not in boot mode, pt. 4
 
 8. **The backend server has stopped working and doesn't retrieve data**
    * Double check the environment variable is still correctly set up
-   * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel
+   * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel. Then redeploy the code
 
 
 # 8️⃣  Attributions
@@ -129,3 +134,18 @@ The following repositories have been used to build this project:
 Drivers for the displays:
 - @russhughes (T-Display-S3): https://github.com/russhughes/st7789s3_mpy
 - @mmMicky(T-Dongle-S3): https://github.com/mmMicky/st7735_mpy
+
+# 9️⃣  Buy me a coffe
+
+If you liked this project and want to support me, feel free to buy me a coffee ☕:
+
+https://buymeacoffee.com/pablogonmo
+
+You can also support me using the affiliate links:
+
+- 📦 Lilygo T-Display-S3 : 
+ https://www.aliexpress.us/item/3256804673688886.html
+- 📦 LilygoT-Dongle-S3 : 
+https://www.aliexpress.us/item/3256804310228562.html
+- 📦 Battery
+https://www.aliexpress.com/item/4001226499594.html
