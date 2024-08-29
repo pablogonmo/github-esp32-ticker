@@ -12,7 +12,7 @@ I have coded 2 versions for which the code is available in this very same repo:
 
 2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters. It doesn't have a configurable led, but features 2 buttons to navigate through the UI and the menu.
 
-<img src="img/main.jpg" align="center" width="50" height="50">
+<img src="img/main.jpeg" align="center" width="50" height="50">
 
 
 This readme will walk you through the whole set up process of all the components: the node.js backend server, the api token generation and the firmware flashing.
@@ -23,18 +23,18 @@ You will need all the following to complete the installation and setup of the de
 
 - While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY in order to fetch the data. This is detailed in section 3
 
-- Either the T-Dongle-S3 or the T-Display-S3. You can purchase them using the links down below in section 2
+- A Lyligo T-Dongle-S3 (80x160) or T-Display-S3 (170x320). You can purchase them using the links down below in section 2
 
-- For the T-Display-S3 the battery is optional, as you an power it using any usb-c cable
+   * You can also purchase a li-po batttery for the T-Display-S3 but is optional, as you can power it using any usb-c cable
 
-- you can purchase the shell version of the T-Display-S3 (non-touch) or you can print your own shell with the stl files in the folder dimensions
+   * Also, you can purchase the shell version of the T-Display-S3 or you can print your own shell with the stl files from the folder dimensions
 
-- A backend server to retrieve all the data, and fetch it as json files. Configuration is described in section 4
+- A backend server to retrieve all the data, and fetch it as json files. I have used a node.js server deployed in vercel which is free. Configuration is described in section 4
 
-- Flash the devices with the micropython firmware. Environment set up and flashing process is described in section 5
-
-- Alternatively you can generate binary files to flash the device easily, or you can use the binaries provided in the files folder
-
+- Flash the devices with one of the options described in sections 6, 7, 8. The flashing process is described in section 5:
+   * Option A: Flash the micropython custom firmware and manually upload the code
+   * Option B: Compile the custom micropython firmware together with python files and flash the binaries
+   * Option C: Flash the provided binaries in folder "firmware" [recommended]
 
 # 2️⃣ Shopping List
 If you want to support the project, you can use the below affiliate links to purchase the PCB's and batteries:
