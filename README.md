@@ -1,109 +1,76 @@
-<h1 align = "center"> 🌟T-Display-S3🌟</h1>
+<h1 align = "center"> 🌟Github Contributions Ticker🌟</h1>
 
-## 1️⃣Support Product
+# 0️⃣SIntroduction
+This project contains all the necessary code to build an ESP32 based ticker, that downloads the github contributions and statistics from the github GraphQL API and displays them in an LCD screen.
 
-| Product (PinMap)        | SOC        | Flash | PSRAM    | Resolution | Size     |
-| ----------------------- | ---------- | ----- | -------- | ---------- | -------- |
-| [T-Display-S3][1]       | ESP32-S3R8 | 16MB  | 8MB(OPI) | 170x320    | 1.9 Inch |
-
-[1]: https://www.lilygo.cc/products/t-display-s3?variant=42589373268149
+<img src="img/ticker-black.png" align="center">
 
 
-## 3️⃣ PlatformIO Quick Start (Recommended)
-
-1. Install [Visual Studio Code](https://code.visualstudio.com/) and [Python](https://www.python.org/)
-2. Search for the `PlatformIO` plugin in the `VisualStudioCode` extension and install it.
-3. After the installation is complete, you need to restart `VisualStudioCode`
-4. After restarting `VisualStudioCode`, select `File` in the upper left corner of `VisualStudioCode` -> `Open Folder` -> select the `T-Display-S3` directory
-5. Wait for the installation of third-party dependent libraries to complete
-6. Click on the `platformio.ini` file, and in the `platformio` column
-7. Uncomment one of the lines `default_envs = xxxx` to make sure only one line works
-8. Click the (✔) symbol in the lower left corner to compile
-9. Connect the board to the computer USB
-10. Click (→) to upload firmware
-11. Click (plug symbol) to monitor serial output
-12. If it cannot be written, or the USB device keeps flashing, please check the **FAQ** below
+The project started on late may-2024 and coded it for 2 months. I am giving it away as FOSS so anybody can build their own.
 
 
-## 4️⃣  Arduino IDE Manual installation
+I have coded 2 versions:
+1.- a 0.96" usb dongle version with no contgributions matrix, displays the stats and user avatar only
+2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters
 
-1. Install [Arduino IDE](https://www.arduino.cc/en/software)
-2. Install [Arduino ESP32 V 2.0.5 or above and below V3.0](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
-3. Download `T-Display-S3` , move to Arduino library folder (e.g. C:\Users\YourName\Documents\Arduino\libraries)
-4. Copy all folders in [lib folder](./lib/) to Arduino library folder (e.g. C:\Users\YourName\Documents\Arduino\libraries)
-5. Enter the downloaded `T-Display-S3/examples` directory
-6. Select any example and double-click the `any_example.ino` to open it
-7. Open ArduinoIDE ,`Tools` ，Make your selection according to the table below
-    | Arduino IDE Setting                  | Value                             |
-    | ------------------------------------ | --------------------------------- |
-    | Board                                | **ESP32S3 Dev Module**            |
-    | Port                                 | Your port                         |
-    | USB CDC On Boot                      | Enable                            |
-    | CPU Frequency                        | 240MHZ(WiFi)                      |
-    | Core Debug Level                     | None                              |
-    | USB DFU On Boot                      | Disable                           |
-    | Erase All Flash Before Sketch Upload | Disable                           |
-    | Events Run On                        | Core1                             |
-    | Flash Mode                           | QIO 80MHZ                         |
-    | Flash Size                           | **16MB(128Mb)**                   |
-    | Arduino Runs On                      | Core1                             |
-    | USB Firmware MSC On Boot             | Disable                           |
-    | Partition Scheme                     | **16M Flash(3M APP/9.9MB FATFS)** |
-    | PSRAM                                | **OPI PSRAM**                     |
-    | Upload Mode                          | **UART0/Hardware CDC**            |
-    | Upload Speed                         | 921600                            |
-    | USB Mode                             | **CDC and JTAG**                  |
-    * The options in bold are required, others are selected according to actual conditions.
 
-8. Click `upload` , Wait for compilation and writing to complete
-9. If it cannot be written, or the USB device keeps flashing, please check the **FAQ** below
+# 1️⃣  Requirements
+You will need all the following to complete the installation and setup of the device:
 
-* You can also choose `LilyGo T-Display-S3` as the board, but the partition table is fixed to **16M Flash (3M APP/9.9MB FATFS)**
-* [T-Display-S3 Arduino IDE Record](https://www.youtube.com/watch?v=PgtxisFvMcc)
+- While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY in order to fetch the data. This is detailed in section 2
 
-## 5️⃣ ESP-IDF
+- Either the T-Dongle-S3 or the T-Display-S3. You can purchase them using the links down below in section 3
 
-* `T-Display-S3` esp-idf version example, please jump to this [LilyGo-Display-IDF](https://github.com/Xinyuan-LilyGO/LilyGo-Display-IDF)
+- For the T-Display-S3 the battery is optional, as you an power it using any usb-c cable
 
-## 6️⃣ Micropython
+- A backend server to retrieve all the data, and fetch it as json files. Configuration is described in section 4
+
+- Flash the devices with the micropython firmware. Environment set up and flashing process is described in section 5
+
+- Alternatively you can generate binary files to flash the device easily, or you can use the binaries provided in the files folder
+
+
+# 2️⃣SGenerating a Github API Key
+The back-end server fetched the source data from github directly by means of the graphQL API which is publicly available. The only required is a personal access token which can be generated following the steps:
+
+1.- Go to your github account settings
+
+2.- under Developer Settings > Personal Access Tokens > Personal access tokens (classic) https://github.com/settings/tokens
+
+3.- click on generate new token, classic for general use
+
+4.- set a wide expiration date, and grant the minimum permissions, usually read, user and repo should be sufficient
+
+
+# 3️⃣SShopping List
+Find below affiliate links you can use to purchase the PCB's and batteries:
+
+| Product                 | SOC        | Flash | Resolution | Size      | Driver    |
+| ----------------------- | ---------- | ----- | ---------- | --------  | --------  |
+| [T-Dongle-S3][1]        | ESP32-S3R8 | 16MB  | 80x160     | 0.96 Inch | ST7735    |
+| [T-Display-S3][2]       | ESP32-S3R8 | 16MB  | 170x320    | 1.9 Inch  | ST7789    |
+
+[1]: https://www.aliexpress.us/item/3256804673688886.html
+[2]: https://www.aliexpress.us/item/3256804310228562.html
+
+
+# 4️⃣  Back-End server installation
+
+
+
+# 5️⃣  Micropython environment set up
 
 * [russhughes/st7789s3_mpy](https://github.com/russhughes/st7789s3_mpy)
 * [Micropython](https://github.com/Xinyuan-LilyGO/lilygo-micropython)
 
 
-# 7️⃣ ESP32 basic examples
-
-* [BLE Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE)
-* [WiFi Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi)
-* [SPIFFS Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/SPIFFS)
-* [FFat Examples](https://github.com/espressif/arduino-esp32/tree/master/libraries/FFat)
-* For more examples of esp32 chip functions, please refer to [arduino-esp32-libraries](https://github.com/espressif/arduino-esp32/tree/master/libraries)
 
 
-## 9️⃣ FAQ
+# 6️⃣  Binaries compilation
 
-1. **The screen does not light up when using battery?**
-   * When T-Display-S3 is powered by battery, GPIO15 must be set to HIGH to turn on the backlight.
-   * Please add the following two lines at the beginning of the setup
-   ```C++
-   void setup(){
-      //Turn on display power
-      pinMode(15, OUTPUT);
-      digitalWrite(15, HIGH);
-   }
-   
-   ```
-2.  **The program can be written normally, but there is still no display after writing**
-   * If you are using **TFT_eSPI**, then you can try running `Arduino_GFXDemo` first. If nothing is displayed after writing, you can determine that there is a problem with the hardware.
-   * If `Arduino_GFXDemo` is written normally, but **TFT_eSPI** is not displayed, then it can be judged that `User_Setup_Select` has been overwritten, then please read the third article of **FAQ** to reconfigure **TFT_eSPI**
-3. **How to update **TFT_eSPI**, or confirm whether the **TFT_eSPI** pin configuration is correct?**
-   * Search for **TFT_eSPI** in the ArduinoIDE library manager and click Update.
-   * Enter the default library manager installation location and open the **TFT_eSPI** folder. The default installation location is:(e.g. C:\Users\YourName\Documents\Arduino\libraries)
-   * Open User_Setup_Select.h, comment out #include <User_Setup.h> which is enabled by default, or delete it
-   * Search **Setup206_LilyGo_T_Display_S3**, find it, cancel the previous comment, then save it, and finally close it, so that TFT_eSPI uses the pin definition of T-Display-S3 by default
-   ```c++
-   #include <User_Setups/Setup206_LilyGo_T_Display_S3.h>     // For the LilyGo T-Display S3 based ESP32S3 with ST7789 170 x 320 TFT
-   ```
+
+# 7️⃣ FAQ
+
 4. **Can't upload any sketch，Please enter the upload mode manually.**
    * Connect the board via the USB cable
    * Press and hold the **BOOT** button , While still pressing the **BOOT** button
@@ -113,26 +80,16 @@
    * Upload sketch
    * Press the **RST** button to exit download mode
 
-5. **If you use external power supply instead of USB-C, please turn off the CDC option. This is because the board will wait for USB access when it starts.**
+6. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](https://github.com/Xinyuan-LilyGO/T-Display-S3/firmware/README.MD)**
 
-   * For Arduino IDE users, it can be turned off in the options , Please note that turning off USB CDC will turn off Serial redirection to USBC. At this time, you will not see any Serial message output when opening the port from USB-C, but output from GPIO43 and GPIO44.
 
-   ```c
-   Tools -> USB CDC On Boot -> Disable
-   ```
+#9️⃣ Attributions
+The following repositories have been used to build this project:
+ 
+Lilygo hardware repos:
+https://github.com/Xinyuan-LilyGO/T-Dongle-S3/blob/main/image/Pins.png
+https://github.com/Xinyuan-LilyGO/T-Display-S3/blob/main/image/T-DISPLAY-S3.jpg
 
-   * For platformio users, you can add the following compilation flags in the ini file
-
-   ```c
-   build_flags =
-       ; Enable -DARDUINO_USB_CDC_ON_BOOT will start printing and wait for terminal access during startup
-       ; -DARDUINO_USB_CDC_ON_BOOT=1
-
-       ; Enable -UARDUINO_USB_CDC_ON_BOOT will turn off printing and will not block when using the battery
-       -UARDUINO_USB_CDC_ON_BOOT
-   ```
-
-6. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](./firmware/README.MD)**
-7. **Can I use an external 5V pin for power? Please see here [issues/205](https://github.com/Xinyuan-LilyGO/T-Display-S3/issues/205)**
-9. The default charging current is set at 500mA per hour. If you need to adjust the charging current, please see this [issue](https://github.com/Xinyuan-LilyGO/T-Display-S3/issues/230)
-
+Drivers for the displays:
+- russhughes (T-Display-S3): https://github.com/russhughes/st7789s3_mpy
+- mmMicky(T-Dongle-S3): https://github.com/mmMicky/st7735_mpy
