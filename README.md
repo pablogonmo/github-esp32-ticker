@@ -6,11 +6,16 @@ This project contains all the necessary code to build an ESP32 based ticker, tha
 <img src="img/ticker-black.png" align="center">
 
 
-I have coded 2 versions:
+I have coded 2 versions for which the code is available in this very same repo:
 
-1.- a 0.96" usb dongle version with no contgributions matrix, displays the stats and user avatar only
+1.- a 0.96" usb dongle version with no contgributions matrix, displays the stats and user avatar only. It has a back led for which the color can be changed. Single button to navigate through the menu.
 
-2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters
+2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters. It doesn't have a configurable led, but features 2 buttons to navigate through the UI and the menu.
+
+<img src="img/main.jpg" align="center" width="50" height="50">
+
+
+This readme will walk you through the whole set up process of all the components: the node.js backend server, the api token generation and the firmware flashing.
 
 
 # 1️⃣  Requirements
@@ -78,25 +83,78 @@ node_modules/*
 
 package.json
 
-If everyhthing goes well, you should be able to see data at: https://yourproject.vercel.app/api/githubData?username=yourusername
+If everything goes well, you should be able to see data at: https://yourproject.vercel.app/api/githubData?username=yourusername
 
 
-# 5️⃣  Micropython environment set up
-
-* [Micropython](https://github.com/Xinyuan-LilyGO/lilygo-micropython)
-
-
-
-
-# 6️⃣  Binaries compilation
+Once the back end server is up and running, you have 2 choices:
+- flash the device with a micropython firmware, manually upload the code and run it
+- compile the code to generate a custom micropython firmware with the display drivers, then flash it
+- flash the firmware available in the "firmware" folder from this repo
 
 
-# 7️⃣ FAQ
+# 5️⃣  Flash a firmware
+To flash a firmware, follow the steps:
+
+1.- open the flash_download_tool_3.9.6 [download](https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.7_2.zip)
+
+2.- connect the device in boot mode
+
+3.- select ESP32-S3 / Develop / USB
+
+4.- Check the tickbox, look for the firmware you want to flash and write direction "@" 0. Then: SPI Mode: DIO, SPI Speed: 40 Mhz, COM: your_COM, BAUD: 921600
+
+5-. Click "Erase", then "Start"
+
+6.- Once finished, click "Stop" and reset the device (don't boot mode it this time)
+
+
+# 6️⃣  Option A: Flash the micropython custom firmware and manually upload the code
+
+Download the micropython firmware for [T-Dongle-S3](https://github.com/mmMicky/st7735_mpy/blob/master/firmware/GENERIAL_S3/firmware.bin) or [T-Display-S3](https://github.com/russhughes/st7789s3_mpy/blob/main/firmware/firmware.bin) and flash it following the steps in section 5.
+
+
+Once flashed the micropython firmware, you can upload the micropython code directly by using any IDE that supports python and espressif devices:
+- You can use VSCode or Thonny (recommended)
+- Once installed, connect to the device and upload all the .py files from the root of this repo and the ones in the specific folder of the device you've got.
+- Reboot the device and follow the steps in section 9
+
+
+# 7️⃣  Option B: Compile the custom micropython firmware together with python files and flash the binaries
+This is out of the scope of this guide and not recommended as micropython/espressif are constantly evolving and newer versions might not work.
+
+Just for the record, I myself managed to successfully compile the binaries using:
+   * Dongle-s3: Ubuntu 22.04.4 LTS, micropython v1.19, esp-idf v4.4 
+   * Display-s3: Debian 12.5, micropyton v1.23.0, esp-idf v5.2.2
+
+If you still want to go down this route, you can follow the guide: https://github.com/micropython/micropython/blob/master/ports/esp32/README.md#setting-up-esp-idf-and-the-build-environment
+
+
+# 8️⃣  Option C: Flash the provided binaries in folder "firmware" [recommended]
+This is the easiest and quickest option to get your github ticker up and running. Simply flash the firmware using steps from section 5. Then continue to configure the device as described in section 9.
+
+Disclaimer:
+- the compiled code connects to my back-end server
+- At the moment of writing this guide is up and running and free for anyone to use it but there's no warranty I will maintain it
+- No data is logged, apart from 1hr of runtime logs in vercel
+- Use it at your own convenience if you like, or compile the code after prior verification
+
+
+# 9️⃣ Configure the Device
+Once flashed the code and booted, the device will show a black screen with an IP. It has created a WIFI access point called "GITHUB_TICKER" for you to connect to it (passwordless). 
+
+Once connected open a web browser and go to 192.168.4.1
+
+It will load a plain html page where you can input your WIFI (so the device can connect to your back-end server) and github user. 
+
+After submitting, the device will reboot and start downloading all the data.
+
+
+# 8️⃣ FAQ
 1. **There are 2 versions of the T-Dongle-S3, which one should I choose?**
-   * The one with the LCD screen
+   * The one with the LCD screen. Contact me on twitter in case of doubt
 
 2. **There are 2 versions of the T-Display-S3, which one should I choose?**
-   * The non-touch version. Either with the shell or print it yourself
+   * The non-touch version. Either with the shell or print it yourself with the files provided in the dimensions folder. Contact me on twitter in case of doubt
 
 3. **I can't flash the device with the micropython firmware**
    * If you followed the steps above it should work correctly and you should be able to connect to the device and execute python code with VSCode or Thonny (recommended). Otherwise contact me on twitter if you can't make it work
@@ -123,8 +181,7 @@ If everyhthing goes well, you should be able to see data at: https://yourproject
    * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel. Then redeploy the code
 
 
-# 8️⃣  Attributions
-
+# 9️⃣  Attributions
 The following repositories have been used to build this project:
  
 @Xinyuan-LilyGO hardware repos:
@@ -135,17 +192,23 @@ Drivers for the displays:
 - @russhughes (T-Display-S3): https://github.com/russhughes/st7789s3_mpy
 - @mmMicky(T-Dongle-S3): https://github.com/mmMicky/st7735_mpy
 
-# 9️⃣  Buy me a coffe
+@espressif: https://github.com/espressif/esp-idf
 
-If you liked this project and want to support me, feel free to buy me a coffee ☕:
+@micropython: https://github.com/micropython/micropython
 
-https://buymeacoffee.com/pablogonmo
+
+# 10️⃣  Buy me a coffe
+If you liked this project and want to support me, you can buy me a coffee:
+
+☕ https://buymeacoffee.com/pablogonmo
 
 You can also support me using the affiliate links:
 
-- 📦 Lilygo T-Display-S3 : 
+🔗 Lilygo T-Display-S3 : 
  https://www.aliexpress.us/item/3256804673688886.html
-- 📦 LilygoT-Dongle-S3 : 
+
+🔗 LilygoT-Dongle-S3 : 
 https://www.aliexpress.us/item/3256804310228562.html
-- 📦 Battery
+
+🔗 Battery
 https://www.aliexpress.com/item/4001226499594.html
