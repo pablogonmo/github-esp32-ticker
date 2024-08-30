@@ -3,7 +3,7 @@
 # 0️⃣ Introduction
 This project contains all the necessary code to build an ESP32 based ticker, that downloads the github contributions and statistics from the github GraphQL API and displays them in an LCD screen.
 
-<img src="img/ticker-black.png" align="center">
+<img src="img/display.png" align="center">
 
 
 I have coded 2 versions for which the code is available in this very same repo:
@@ -40,20 +40,24 @@ You will need all the following to complete the installation and setup the devic
 # 2️⃣ Shopping List
 If you want to support the project, you can use the affiliate links down below to purchase the PCB's and batteries:
 
-| Product                 | SOC        | Flash | Resolution | Size     | Driver   |
-| ----------------------- | ---------- | ----- | ---------- | -------- | -------- |
-| [T-Dongle-S3][1]        | ESP32-S3R8 | 16MB  | 80x160     | 0.96"    | ST7735   |
-| [T-Display-S3][2]       | ESP32-S3R8 | 16MB  | 170x320    | 1.9"     | ST7789   |
+| Product             | SOC        | Flash | Resolution | Size     | Driver   | Link                        |
+| ------------------- | ---------- | ----- | ---------- | -------- | -------- | --------------------------- |
+| T-Dongle-S3         | ESP32-S3R8 | 16MB  | 80x160     | 0.96"    | ST7735   | [Amazon][1] [Aliexpress][2] |
+| T-Display-S3        | ESP32-S3R8 | 16MB  | 170x320    | 1.9"     | ST7789   | [Amazon][3] [Aliexpress][4] |
 
-[1]: https://www.aliexpress.us/item/3256804673688886.html
-[2]: https://www.aliexpress.us/item/3256804310228562.html
+[1]: https://www.amazon.es/LILYGO-T-Dongle-S3-ESP32-S3-TTGO-desarrollo/dp/B0BK9162QY?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=N3LQI2M2TN5E&dib=eyJ2IjoiMSJ9.BYaX7vXkqhGvhd3yw6Ziv1-eDHFBfpblIpIMscrqNJnGZeKh_IbOrQeMaBx1tiX-03__jCZEgcqJBgScT57qOhc5HhMx9yq-CQqX7F1qONa20Mh6kucYNDz5VlYWiICGq8DGZ8khpWRedJ63Do_NFbFUqyj1Th7McyAU9-9BNUgnHKiOf9F9ChdFVOVMdtEQoof2RSF40sHPyavbGx9xX5mgpiH7uL6CrgGzbZitcN2pPLNBh1NC4IIY-h8u57tDC3DgfD9WO0lZZfr7ksY3f5BqVfUsu-zLS89hqZWaP6A.c4EnrHQHYCjopMnzupT4dA0d_A-JV0zu1w0_7RO19hI&dib_tag=se&keywords=t-dongle-s3&qid=1720687272&sprefix=t-dongle-s3%2Caps%2C86&sr=8-5&linkCode=ll1&tag=pablogonmo-21&linkId=027bdc89afdac5055089f5ebecb3a270&language=es_ES&ref_=as_li_ss_tl
+[2]: https://es.aliexpress.com/item/1005004864194157.html
+[3]: https://www.amazon.es/T-Display-S3-Binghe-T-Display-Bluetooth-Compatible/dp/B0CWTDV7SK?crid=3H7L096PFVHU6&dib=eyJ2IjoiMSJ9.eWu7fabe8-4fpO0reoB542geioYrl7G_cN7myic2eqJfdldvzJZn0_wO2ZF6jsnVezDve2D_OZoCWza95q3y5c-ozLw-cqJUFiDp1f-XaCXagjNJFM0Y0zvSsKPD-ceoUBy_o3T2y0pseVAXJFrc_s26p9DCpIKDdTIVZHg2B40h_Te_U4cZyA1L9g0GIArTjBEPVQDhIKYlnIW5RxWvGI0TUOtC5EiU4czM6RP-9Yj1rFBy7mnLO2rysUVThwl8-5WlsxkoSwkqFV_sh_uq4snx2Mp2e6H1vARuvsuDRd0.tK0uOmGBqHARKET_RC-LNGxhdxphez_xRlV1S6pr15Q&dib_tag=se&keywords=t-display-s3&qid=1720687363&sprefix=t-display%2Caps%2C286&sr=8-4&linkCode=ll1&tag=pablogonmo-21&linkId=0f12304288f3f776d979bac5658d9b44&language=es_ES&ref_=as_li_ss_tl
+[4]: https://es.aliexpress.com/item/1005006068695679
 
+Remember to choose the LCD version for the t-dongle-s3
+Remember to choose the non-touch+shell version for the t-display-s3
 
-| Product                 | Capacity | Voltage | Measurements |
-| ----------------------- | -------- | ------- | ------------ |
-| [Battery][3]            | 200mAh   | 3.7V    | 3x25x30 mm   |
+| Product             | Capacity | Voltage | Measurements |
+| ------------------- | -------- | ------- | ------------ |
+| [Battery][5]        | 200mAh   | 3.7V    | 3x25x30 mm   |
 
-[3]: https://www.aliexpress.com/item/4001226499594.html
+[5]: https://es.aliexpress.com/item/4001059908660.html
 
 
 # 3️⃣ Generating a Github personal access token
@@ -83,6 +87,9 @@ node_modules/*
 
 package.json
 
+package-lock.json
+
+
 If everything goes well, you should be able to see data at: https://yourproject.vercel.app/api/githubData?username=yourusername
 
 
@@ -106,10 +113,11 @@ To flash a firmware, follow the steps:
 
 4.- Check the tickbox, look for the firmware you want to flash and write direction "@" 0. Then: SPI Mode: DIO, SPI Speed: 40 Mhz, COM: your_COM, BAUD: 921600
 
-5-. Click "Erase", then "Start"
+5-. Click "Erase" and wait for it to finish (will show in blue). Then click "Start" and again let it finish
 
-6.- Once finished, click "Stop" and reset the device (don't boot mode it this time)
+6.- Once finished, click "Stop" and re-plug the device (don't boot mode it this time)
 
+<img src="img/flash_download_tool.png" align="center" width="150" height="150">
 
 # 6️⃣  Option A: Flash the micropython custom firmware and manually upload the code
 
@@ -117,7 +125,10 @@ Download the micropython firmware for [T-Dongle-S3](https://github.com/mmMicky/s
 
 Once flashed the micropython firmware, you can upload the micropython code directly by using any IDE that supports python and espressif devices:
 - You can use VSCode or Thonny (recommended)
-- Once installed, connect to the device and upload all the .py files from the root of this repo and the ones in the specific folder for your device
+- Once installed, connect to the device and upload all the .py files from the root of this repo, the fonts folder and the python files from the specific folder for your device. Here's how you want to upload the files: 
+
+<img src="img/thonny.png" align="center" width="150" height="150">
+
 - Reboot the device and follow the steps in section 9
 
 
@@ -148,7 +159,7 @@ Once connected open a web browser and go to 192.168.4.1
 
 It will load a plain html page where you can input your WIFI (so the device can connect to your back-end server, but of course not send to the backend) and github user. 
 
-After submitting, the device will reboot and start downloading all the data.
+After submitting, the device will reboot and start downloading all the data (if not, simply plug it in again).
 
 You can watch the configuration steps here:
 <video src="https://www.youtube.com/watch?v=hwvotBVL1M0&t=34s" width="600" controls>
@@ -178,8 +189,9 @@ You can watch the configuration steps here:
 5. **If all the above are invalid, please flash the factory firmware for quick verification, please check [here](https://github.com/Xinyuan-LilyGO/T-Display-S3/blob/main/firmware/README.MD)**
 
 6. **I can't connect to the device plugging it in my laptop**
-   * Reflash the micropython firmware
-
+   * Make sure is not in boot mode
+   * If not, try reflashing the micropython firmware
+   
 7. **I can connect to the device but can't execute any python code**
    * Make sure you're not in boot mode, pt. 4
 
@@ -187,6 +199,8 @@ You can watch the configuration steps here:
    * Double check the environment variable is still correctly set up
    * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel. Then redeploy the code
 
+9. **I followed all the steps and configurd the wifi ssid/password, but it doesn't bootload**
+   * poor wifi connection might be the cause, try to get closer to your wifi router or connect the device to a mobile phone access point to test connection
 
 # 9️⃣  Attributions
 The following repositories have been used to build this project:
@@ -204,19 +218,22 @@ Drivers for the displays:
 @micropython: https://github.com/micropython/micropython
 
 
-# 1️⃣ 0️⃣  Buy me a coffe
+# 1️⃣0️⃣  Buy me a coffee
 If you liked this project and want to support me, you can buy me a coffee:
 
 ☕ https://buymeacoffee.com/pablogonmo
 
 
-You can also use the affiliate links:
 
-🔗 Lilygo T-Display-S3 : 
- https://www.aliexpress.us/item/3256804673688886.html
+Or use the affiliate links:
 
-🔗 LilygoT-Dongle-S3 : 
-https://www.aliexpress.us/item/3256804310228562.html
+🔗 Lilygo T-Dongle-S3: 
+https://amzn.to/4g7T52S
+https://es.aliexpress.com/item/1005004864194157.html
+
+🔗 Lilygo T-Display-S3: 
+https://amzn.to/476LMV7
+https://es.aliexpress.com/item/1005006068695679
 
 🔗 Battery
-https://www.aliexpress.com/item/4001226499594.html
+https://es.aliexpress.com/item/4001059908660.html
