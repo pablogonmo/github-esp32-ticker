@@ -12,7 +12,7 @@ I have coded 2 versions for which the code is available in this very same repo:
 
 2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters. It doesn't have a configurable led, but features 2 buttons to navigate through the UI and the menu.
 
-<img src="img/main.jpeg" align="center" width="150" height="150">
+<img src="img/main.jpeg" align="center" width="250" height="250">
 
 
 This readme will walk you through the whole set up process of all the components: the node.js backend server, the api token generation and the firmware flashing.
@@ -117,7 +117,7 @@ To flash a firmware, follow the steps:
 
 6.- Once finished, click "Stop" and re-plug the device (don't boot mode it this time)
 
-<img src="img/flash_download_tool.png" align="center" width="150" height="150">
+<img src="img/flash_download_tool.png" align="center">
 
 # 6️⃣  Option A: Flash the micropython custom firmware and manually upload the code
 
@@ -127,7 +127,7 @@ Once flashed the micropython firmware, you can upload the micropython code direc
 - You can use VSCode or Thonny (recommended)
 - Once installed, connect to the device and upload all the .py files from the root of this repo, the fonts folder and the python files from the specific folder for your device. Here's how you want to upload the files: 
 
-<img src="img/thonny.png" align="center" width="150" height="150">
+<img src="img/thonny.png" align="center">
 
 - Reboot the device and follow the steps in section 9
 
@@ -161,10 +161,7 @@ It will load a plain html page where you can input your WIFI (so the device can 
 
 After submitting, the device will reboot and start downloading all the data (if not, simply plug it in again).
 
-You can watch the configuration steps here:
-<video src="https://www.youtube.com/watch?v=hwvotBVL1M0&t=34s" width="600" controls>
-  Your browser does not support the video tag.
-</video>
+You can watch the configuration steps [here](https://www.youtube.com/watch?v=hwvotBVL1M0&t=34s).
 
 
 # 8️⃣ FAQ
@@ -200,7 +197,7 @@ You can watch the configuration steps here:
    * If so, double check the personal access token hasn't expired, if so regenerate it and set it up on vercel. Then redeploy the code
 
 9. **I followed all the steps and configurd the wifi ssid/password, but it doesn't bootload**
-   * poor wifi connection might be the cause, try to get closer to your wifi router or connect the device to a mobile phone access point to test connection
+   * Poor wifi connection might be the cause, try to get closer to your wifi router or connect the device to a mobile phone access point to test connection
 
 # 9️⃣  Attributions
 The following repositories have been used to build this project:
@@ -228,12 +225,12 @@ If you liked this project and want to support me, you can buy me a coffee:
 Or use the affiliate links:
 
 🔗 Lilygo T-Dongle-S3: 
-https://amzn.to/4g7T52S
-https://es.aliexpress.com/item/1005004864194157.html
+   * https://amzn.to/4g7T52S
+   * https://es.aliexpress.com/item/1005004864194157.html
 
 🔗 Lilygo T-Display-S3: 
-https://amzn.to/476LMV7
-https://es.aliexpress.com/item/1005006068695679
+   * https://amzn.to/476LMV7
+   * https://es.aliexpress.com/item/1005006068695679
 
 🔗 Battery
-https://es.aliexpress.com/item/4001059908660.html
+   * https://es.aliexpress.com/item/4001059908660.html
