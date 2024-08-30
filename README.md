@@ -8,36 +8,37 @@ This project contains all the necessary code to build an ESP32 based ticker, tha
 
 I have coded 2 versions for which the code is available in this very same repo:
 
-1.- a 0.96" usb dongle version with no contgributions matrix, displays the stats and user avatar only. It has a back led for which the color can be changed. Single button to navigate through the menu.
+1.- a 0.96" usb dongle version with no contributions matrix, displays the stats and user avatar only. It has a back led for which the color can be changed. Single button to navigate through the menu.
 
 2.- a 1.9" battery powered version that displays a main screen (stats + user avatar) and the github contributions matrix in quarters. It doesn't have a configurable led, but features 2 buttons to navigate through the UI and the menu.
 
-<img src="img/main.jpeg" align="center" width="50" height="50">
+<img src="img/main.jpeg" align="center" width="150" height="150">
 
 
 This readme will walk you through the whole set up process of all the components: the node.js backend server, the api token generation and the firmware flashing.
 
+You can see it in action [here](https://www.youtube.com/watch?v=hwvotBVL1M0).
 
 # 1️⃣  Requirements
-You will need all the following to complete the installation and setup of the device:
+You will need all the following to complete the installation and setup the device:
 
-- While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY in order to fetch the data. This is detailed in section 3
+- While all the data used is publicly available and can be checked for any github user you want, you'll need a github API KEY to fetch the data. This is detailed in section 3
 
-- A Lyligo T-Dongle-S3 (80x160) or T-Display-S3 (170x320). You can purchase them using the links down below in section 2
+- A Lilygo T-Dongle-S3 (80x160) or T-Display-S3 (170x320). You can get them using the links from section 2
 
-   * You can also purchase a li-po batttery for the T-Display-S3 but is optional, as you can power it using any usb-c cable
+   * You can also incorporate a li-po batttery for the T-Display-S3 but is optional, as you can power it using any usb-c cable
 
-   * Also, you can purchase the shell version of the T-Display-S3 or you can print your own shell with the stl files from the folder dimensions
+   * Also, you can buy the shell version of the T-Display-S3 or you can print your own shell with the stl files from the folder called "dimensions"
 
-- A backend server to retrieve all the data, and fetch it as json files. I have used a node.js server deployed in vercel which is free. Configuration is described in section 4
+- A backend server to retrieve all the data, and serve them as json files. I have used a node.js server deployed in vercel which is free. Configuration is described in section 4
 
-- Flash the devices with one of the options described in sections 6, 7, 8. The flashing process is described in section 5:
+- Finally flash the devices as shown in section 5 with one of the methods described in sections 6, 7, 8:
    * Option A: Flash the micropython custom firmware and manually upload the code
    * Option B: Compile the custom micropython firmware together with python files and flash the binaries
    * Option C: Flash the provided binaries in folder "firmware" [recommended]
 
 # 2️⃣ Shopping List
-If you want to support the project, you can use the below affiliate links to purchase the PCB's and batteries:
+If you want to support the project, you can use the affiliate links down below to purchase the PCB's and batteries:
 
 | Product                 | SOC        | Flash | Resolution | Size     | Driver   |
 | ----------------------- | ---------- | ----- | ---------- | -------- | -------- |
@@ -48,15 +49,15 @@ If you want to support the project, you can use the below affiliate links to pur
 [2]: https://www.aliexpress.us/item/3256804310228562.html
 
 
-| Product            | Capacity | Voltage | Measurements |
-| -------------------| -------- | ------- | ------------ |
-| [Battery][3]       | 200mAh   | 3.7V    | 03x25x30     |
+| Product                 | Capacity | Voltage | Measurements |
+| ----------------------- | -------- | ------- | ------------ |
+| [Battery][3]            | 200mAh   | 3.7V    | 3x25x30 mm   |
 
 [3]: https://www.aliexpress.com/item/4001226499594.html
 
 
 # 3️⃣ Generating a Github personal access token
-The back-end server fetched the source data from github directly by means of the graphQL API which is publicly available. The only required is a personal access token which can be generated following the steps:
+The back-end server fetches the source data from github directly by means of the graphQL API which is publicly available. The only required is a personal access token which can be generated following the steps:
 
 1.- Go to your github account settings
 
@@ -65,7 +66,6 @@ The back-end server fetched the source data from github directly by means of the
 3.- Click on generate new token, classic for general use
 
 4.- Set a wide expiration date, and grant the minimum permissions, usually read, user and repo should be sufficient
-
 
 
 # 4️⃣  Back-End server installation
@@ -93,6 +93,9 @@ Once the back end server is up and running, you have 2 choices:
 
 
 # 5️⃣  Flash a firmware
+
+Disclaimer: remember to change the URL in the main.py file so you can connect to your recently created back-end.
+
 To flash a firmware, follow the steps:
 
 1.- open the flash_download_tool_3.9.6 [download](https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.7_2.zip)
@@ -112,10 +115,9 @@ To flash a firmware, follow the steps:
 
 Download the micropython firmware for [T-Dongle-S3](https://github.com/mmMicky/st7735_mpy/blob/master/firmware/GENERIAL_S3/firmware.bin) or [T-Display-S3](https://github.com/russhughes/st7789s3_mpy/blob/main/firmware/firmware.bin) and flash it following the steps in section 5.
 
-
 Once flashed the micropython firmware, you can upload the micropython code directly by using any IDE that supports python and espressif devices:
 - You can use VSCode or Thonny (recommended)
-- Once installed, connect to the device and upload all the .py files from the root of this repo and the ones in the specific folder of the device you've got.
+- Once installed, connect to the device and upload all the .py files from the root of this repo and the ones in the specific folder for your device
 - Reboot the device and follow the steps in section 9
 
 
@@ -126,16 +128,16 @@ Just for the record, I myself managed to successfully compile the binaries using
    * Dongle-s3: Ubuntu 22.04.4 LTS, micropython v1.19, esp-idf v4.4 
    * Display-s3: Debian 12.5, micropyton v1.23.0, esp-idf v5.2.2
 
-If you still want to go down this route, you can follow the guide: https://github.com/micropython/micropython/blob/master/ports/esp32/README.md#setting-up-esp-idf-and-the-build-environment
+If you still want to go down this route, you can follow the [guide](https://github.com/micropython/micropython/blob/master/ports/esp32/README.md#setting-up-esp-idf-and-the-build-environment)
 
 
 # 8️⃣  Option C: Flash the provided binaries in folder "firmware" [recommended]
 This is the easiest and quickest option to get your github ticker up and running. Simply flash the firmware using steps from section 5. Then continue to configure the device as described in section 9.
 
 Disclaimer:
-- the compiled code connects to my back-end server
+- The compiled code connects to my back-end server
 - At the moment of writing this guide is up and running and free for anyone to use it but there's no warranty I will maintain it
-- No data is logged, apart from 1hr of runtime logs in vercel
+- No data is logged, apart from 1hr of the backend access runtime logs in vercel
 - Use it at your own convenience if you like, or compile the code after prior verification
 
 
@@ -144,9 +146,14 @@ Once flashed the code and booted, the device will show a black screen with an IP
 
 Once connected open a web browser and go to 192.168.4.1
 
-It will load a plain html page where you can input your WIFI (so the device can connect to your back-end server) and github user. 
+It will load a plain html page where you can input your WIFI (so the device can connect to your back-end server, but of course not send to the backend) and github user. 
 
 After submitting, the device will reboot and start downloading all the data.
+
+You can watch the configuration steps here:
+<video src="https://www.youtube.com/watch?v=hwvotBVL1M0&t=34s" width="600" controls>
+  Your browser does not support the video tag.
+</video>
 
 
 # 8️⃣ FAQ
@@ -159,7 +166,7 @@ After submitting, the device will reboot and start downloading all the data.
 3. **I can't flash the device with the micropython firmware**
    * If you followed the steps above it should work correctly and you should be able to connect to the device and execute python code with VSCode or Thonny (recommended). Otherwise contact me on twitter if you can't make it work
 
-4. **I can't upload any sketch，or flash the device**
+4. **I can't upload any sketch or flash the device**
    * Connect the board via the USB cable
    * Press and hold the **BOOT** button , While still pressing the **BOOT** button
    * Press **RST** button
@@ -197,12 +204,13 @@ Drivers for the displays:
 @micropython: https://github.com/micropython/micropython
 
 
-# 10️⃣  Buy me a coffe
+# 1️⃣ 0️⃣  Buy me a coffe
 If you liked this project and want to support me, you can buy me a coffee:
 
 ☕ https://buymeacoffee.com/pablogonmo
 
-You can also support me using the affiliate links:
+
+You can also use the affiliate links:
 
 🔗 Lilygo T-Display-S3 : 
  https://www.aliexpress.us/item/3256804673688886.html
