@@ -152,7 +152,7 @@ Disclaimer:
 - Use it at your own convenience if you like, or compile the code after prior verification
 
 
-# 9️⃣ Configure the Device
+# 9️⃣  Configure the Device
 Once flashed the code and booted, the device will show a black screen with an IP. It has created a WIFI access point called "GITHUB_TICKER" for you to connect to it (passwordless). 
 
 Once connected open a web browser and go to 192.168.4.1
@@ -164,7 +164,7 @@ After submitting, the device will reboot and start downloading all the data (if 
 You can watch the configuration steps [here](https://www.youtube.com/watch?v=hwvotBVL1M0&t=34s).
 
 
-# 8️⃣ FAQ
+# 1️⃣0️⃣  FAQ
 1. **There are 2 versions of the T-Dongle-S3, which one should I choose?**
    * The one with the LCD screen. Contact me on twitter in case of doubt
 
@@ -199,7 +199,7 @@ You can watch the configuration steps [here](https://www.youtube.com/watch?v=hwv
 9. **I followed all the steps and configurd the wifi ssid/password, but it doesn't bootload**
    * Poor wifi connection might be the cause, try to get closer to your wifi router or connect the device to a mobile phone access point to test connection
 
-# 9️⃣  Attributions
+# 1️⃣1️⃣  Attributions
 The following repositories have been used to build this project:
  
 @Xinyuan-LilyGO hardware repos:
@@ -215,22 +215,9 @@ Drivers for the displays:
 @micropython: https://github.com/micropython/micropython
 
 
-# 1️⃣0️⃣  Buy me a coffee
+# 1️⃣2️⃣  Buy me a coffee
 If you liked this project and want to support me, you can buy me a coffee:
 
 ☕ https://buymeacoffee.com/pablogonmo
 
 
-
-Or use the affiliate links:
-
-🔗 Lilygo T-Dongle-S3: 
-   * https://amzn.to/4g7T52S
-   * https://s.click.aliexpress.com/e/_DmFgF3D
-
-🔗 Lilygo T-Display-S3: 
-   * https://amzn.to/476LMV7
-   * https://s.click.aliexpress.com/e/_DDkq1nZ
-
-🔗 Battery
-   * https://s.click.aliexpress.com/e/_DDOGLar
