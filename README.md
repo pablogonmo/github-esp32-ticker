@@ -46,9 +46,9 @@ If you want to support the project, you can use the affiliate links down below t
 | T-Display-S3        | ESP32-S3R8 | 16MB  | 170x320    | 1.9"     | ST7789   | [Amazon][3] [Aliexpress][4] |
 
 [1]: https://www.amazon.es/LILYGO-T-Dongle-S3-ESP32-S3-TTGO-desarrollo/dp/B0BK9162QY?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=N3LQI2M2TN5E&dib=eyJ2IjoiMSJ9.BYaX7vXkqhGvhd3yw6Ziv1-eDHFBfpblIpIMscrqNJnGZeKh_IbOrQeMaBx1tiX-03__jCZEgcqJBgScT57qOhc5HhMx9yq-CQqX7F1qONa20Mh6kucYNDz5VlYWiICGq8DGZ8khpWRedJ63Do_NFbFUqyj1Th7McyAU9-9BNUgnHKiOf9F9ChdFVOVMdtEQoof2RSF40sHPyavbGx9xX5mgpiH7uL6CrgGzbZitcN2pPLNBh1NC4IIY-h8u57tDC3DgfD9WO0lZZfr7ksY3f5BqVfUsu-zLS89hqZWaP6A.c4EnrHQHYCjopMnzupT4dA0d_A-JV0zu1w0_7RO19hI&dib_tag=se&keywords=t-dongle-s3&qid=1720687272&sprefix=t-dongle-s3%2Caps%2C86&sr=8-5&linkCode=ll1&tag=pablogonmo-21&linkId=027bdc89afdac5055089f5ebecb3a270&language=es_ES&ref_=as_li_ss_tl
-[2]: https://es.aliexpress.com/item/1005004864194157.html
+[2]: https://s.click.aliexpress.com/e/_DmFgF3D
 [3]: https://www.amazon.es/T-Display-S3-Binghe-T-Display-Bluetooth-Compatible/dp/B0CWTDV7SK?crid=3H7L096PFVHU6&dib=eyJ2IjoiMSJ9.eWu7fabe8-4fpO0reoB542geioYrl7G_cN7myic2eqJfdldvzJZn0_wO2ZF6jsnVezDve2D_OZoCWza95q3y5c-ozLw-cqJUFiDp1f-XaCXagjNJFM0Y0zvSsKPD-ceoUBy_o3T2y0pseVAXJFrc_s26p9DCpIKDdTIVZHg2B40h_Te_U4cZyA1L9g0GIArTjBEPVQDhIKYlnIW5RxWvGI0TUOtC5EiU4czM6RP-9Yj1rFBy7mnLO2rysUVThwl8-5WlsxkoSwkqFV_sh_uq4snx2Mp2e6H1vARuvsuDRd0.tK0uOmGBqHARKET_RC-LNGxhdxphez_xRlV1S6pr15Q&dib_tag=se&keywords=t-display-s3&qid=1720687363&sprefix=t-display%2Caps%2C286&sr=8-4&linkCode=ll1&tag=pablogonmo-21&linkId=0f12304288f3f776d979bac5658d9b44&language=es_ES&ref_=as_li_ss_tl
-[4]: https://es.aliexpress.com/item/1005006068695679
+[4]: https://s.click.aliexpress.com/e/_DDkq1nZ
 
 Remember to choose the LCD version for the t-dongle-s3
 Remember to choose the non-touch+shell version for the t-display-s3
@@ -226,11 +226,11 @@ Or use the affiliate links:
 
 🔗 Lilygo T-Dongle-S3: 
    * https://amzn.to/4g7T52S
-   * https://es.aliexpress.com/item/1005004864194157.html
+   * https://s.click.aliexpress.com/e/_DmFgF3D
 
 🔗 Lilygo T-Display-S3: 
    * https://amzn.to/476LMV7
-   * https://es.aliexpress.com/item/1005006068695679
+   * https://s.click.aliexpress.com/e/_DDkq1nZ
 
 🔗 Battery
-   * https://es.aliexpress.com/item/4001059908660.html
+   * https://s.click.aliexpress.com/e/_DDOGLar
