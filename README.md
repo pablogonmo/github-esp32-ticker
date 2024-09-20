@@ -46,9 +46,9 @@ If you want to support the project, you can use the affiliate links down below t
 | T-Display-S3        | ESP32-S3R8 | 16MB  | 170x320    | 1.9"     | ST7789   | [Amazon][3] [Aliexpress][4] |
 
 [1]: https://www.amazon.es/LILYGO-T-Dongle-S3-ESP32-S3-TTGO-desarrollo/dp/B0BK9162QY?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=N3LQI2M2TN5E&dib=eyJ2IjoiMSJ9.BYaX7vXkqhGvhd3yw6Ziv1-eDHFBfpblIpIMscrqNJnGZeKh_IbOrQeMaBx1tiX-03__jCZEgcqJBgScT57qOhc5HhMx9yq-CQqX7F1qONa20Mh6kucYNDz5VlYWiICGq8DGZ8khpWRedJ63Do_NFbFUqyj1Th7McyAU9-9BNUgnHKiOf9F9ChdFVOVMdtEQoof2RSF40sHPyavbGx9xX5mgpiH7uL6CrgGzbZitcN2pPLNBh1NC4IIY-h8u57tDC3DgfD9WO0lZZfr7ksY3f5BqVfUsu-zLS89hqZWaP6A.c4EnrHQHYCjopMnzupT4dA0d_A-JV0zu1w0_7RO19hI&dib_tag=se&keywords=t-dongle-s3&qid=1720687272&sprefix=t-dongle-s3%2Caps%2C86&sr=8-5&linkCode=ll1&tag=pablogonmo-21&linkId=6b0d27fdcc7d13170b14b958a1171ea4&language=es_ES&ref_=as_li_ss_tl
-[2]: https://s.click.aliexpress.com/e/_DmFgF3D
+[2]: https://s.click.aliexpress.com/e/_DFBhdlv
 [3]: https://www.amazon.es/LILYGO-T-Display-S3-ESP32-S3-Pantalla-pantalla/dp/B0BRTT727Z?pd_rd_w=dSnuH&content-id=amzn1.sym.5a7a6d63-cd04-4577-9171-c9c301e99efe&pf_rd_p=5a7a6d63-cd04-4577-9171-c9c301e99efe&pf_rd_r=2KGQ89F94VK68EFZWZMH&pd_rd_wg=VKAlg&pd_rd_r=8cb3170a-8dfe-405a-b784-f65abf0ca9c0&pd_rd_i=B0BRTT727Z&psc=1&linkCode=ll1&tag=pablogonmo-21&linkId=9172082af6eecabbd18680fafe0253f3&language=es_ES&ref_=as_li_ss_tl
-[4]: https://s.click.aliexpress.com/e/_DDkq1nZ
+[4]: https://s.click.aliexpress.com/e/_DDZzBuB
 
 Remember to choose the LCD version for the t-dongle-s3
 Remember to choose the non-touch+shell version for the t-display-s3
