@@ -219,5 +219,3 @@ Drivers for the displays:
 If you liked this project and want to support me, you can buy me a coffee:
 
 ☕ https://buymeacoffee.com/pablogonmo
-
-
